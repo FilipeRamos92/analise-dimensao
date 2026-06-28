@@ -1,9 +1,18 @@
 import openpyxl
 import pandas as pd
+from pathlib import Path
 
+try:
+    from verifica_desktop import verifica_desktop
+    pasta_desktop = verifica_desktop()
+
+except Exception as e:
+    print(f"Erro ao verificar a área de trabalho: {e}")
+    pasta_desktop = Path("/mnt/c/Users/Public/Desktop")  
+    
 arquivo_orignal = 'base-analise.xlsx';
 
-arquivo_novo = 'arquivo_final.xlsx';
+arquivo_novo = pasta_desktop / 'arquivo_final.xlsx';
 
 aloc = {}
 
@@ -33,7 +42,6 @@ for index, data_aloc in df_alocacao.iterrows():
         abas_criadas.append(nome_aba)
 
 for index, data_base in df_base.iterrows():
-
     if data_base['Cód. Porto'] != aloc[data_base['Cód. Embarcação']]:
         if data_base['Cód. Porto'] in abas_criadas:
             aba = wb[aloc[data_base['Cód. Embarcação']]]
