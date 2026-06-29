@@ -1,35 +1,49 @@
-import openpyxl
+import os
 import pandas as pd
+import openpyxl
 from pathlib import Path
 import customtkinter as ctk
-
+from tkinter import filedialog
 
 ctk.set_appearance_mode("dark")
 ctk.set_default_color_theme("blue")
 
-try:
-    from verifica_desktop import verifica_desktop
-    pasta_desktop = verifica_desktop()
+def selecionar_origem():
+    """Abre o explorador para escolher o arquivo Excel original"""
+    caminho_escolhido = filedialog.askopenfilename(
+        title="Selecione o arquivo Excel de Origem",
+        filetypes=[("Arquivos do Excel", "*.xlsx")]
+    )
+    if caminho_escolhido:
+        entrada_origem.delete(0, ctk.END)
+        entrada_origem.insert(0, caminho_escolhido)
+        label_status.configure(text="Arquivo de origem selecionado!", text_color="green")
 
-except Exception as e:
-    print(f"Erro ao verificar a área de trabalho: {e}")
-    pasta_desktop = Path("/mnt/c/Users/Public/Desktop")  
+def selecionar_destino():
+    """Abre o explorador para escolher a pasta onde o novo arquivo será salvo"""
+    pasta_escolhida = filedialog.askdirectory(
+        title="Selecione a Pasta de Destino"
+    )
+    if pasta_escolhida:
+        entrada_destino.delete(0, ctk.END)
+        entrada_destino.insert(0, pasta_escolhida)
+        label_status.configure(text="Pasta de destino selecionada!", text_color="green")
 
 def executar_automacao():
        
-    arquivo_orignal = entrada_arquivo.get().strip()
+    arquivo_orignal = entrada_origem.get().strip()
+    pasta_final = entrada_destino.get().strip()
 
-    if not arquivo_orignal:
-        label_status.configure(text="Por favor, insira o nome ou caminho do arquivo original.", text_color="red")
+    if not arquivo_orignal or not pasta_final:
+        label_status.configure(text="Erro: Preencha a origem e o destino!", text_color="red")
         return
 
-    label_status.configure(text="Processando...", text_color="blue")
+    label_status.configure(text="Processando... Por favor, aguarde.", text_color="yellow")
 
     # Força a interface a atualizar o texto antes de travar no processo pesado
-    janela.update_idletasks()
+    app.update_idletasks()
     
-    arquivo_novo = pasta_desktop / 'arquivo_final.xlsx';
-
+    arquivo_novo = Path(pasta_final) / "Alocação por Porto.xlsx"
     aloc = {}
 
     config_tipos = {
@@ -70,28 +84,48 @@ def executar_automacao():
 
 # --- CONSTRUÇÃO DA JANELA VISUAL ---
 
-# Inicializa a janela principal
-janela = ctk.CTk()
-janela.title("Automação de Alocação por Porto")
-janela.geometry("500x350")
+app = ctk.CTk()
+app.title("Automação Análise Porto/Embarcação")
+app.geometry("600x400")
 
-# Título do App
-label_titulo = ctk.CTkLabel(janela, text="Separador de Abas por Porto", font=("Arial", 20, "bold"))
+# Título Principal
+label_titulo = ctk.CTkLabel(app, text="Análise de Porto/Embarcação", font=("Arial", 20, "bold"))
 label_titulo.pack(pady=20)
 
-# Campo: Arquivo Original
-label_instrucao = ctk.CTkLabel(janela, text="Nome ou caminho do arquivo original (Excel):", font=("Arial", 12))
-label_instrucao.pack(pady=10)
+# --- BLOCO 1: ARQUIVO DE ORIGEM ---
+label_origem = ctk.CTkLabel(app, text="Arquivo Original:", font=("Arial", 12, "bold"))
+label_origem.pack(anchor="w", padx=50, pady=(5, 0))
 
-entrada_arquivo = ctk.CTkEntry(janela, width=400, placeholder_text="Digite o nome ou caminho do arquivo aqui...")
-entrada_arquivo.pack(pady=10)
+frame_origem = ctk.CTkFrame(app, fg_color="transparent")
+frame_origem.pack(pady=5, fill="x", padx=40)
 
-# Botão Executar 
-botao_rodar = ctk.CTkButton(janela, text="Gerar Arquivo", command=executar_automacao, font=("Arial", 14, "bold"))
-botao_rodar.pack(pady=20)
+entrada_origem = ctk.CTkEntry(frame_origem, width=440, placeholder_text="Selecione o arquivo Excel original")
+entrada_origem.pack(side="left", padx=(10, 5))
 
-# Linha de Status (Dá o feedback do processo)
-label_status = ctk.CTkLabel(janela, text="Aguardando execução...", font=("Arial", 12))
-label_status.pack(pady=10)
+botao_origem = ctk.CTkButton(frame_origem, text="...", width=40, command=selecionar_origem)
+botao_origem.pack(side="left")
 
-janela.mainloop()
+
+# --- BLOCO 2: PASTA DE DESTINO ---
+label_destino = ctk.CTkLabel(app, text="Salvar em:", font=("Arial", 12, "bold"))
+label_destino.pack(anchor="w", padx=50, pady=(15, 0))
+
+frame_destino = ctk.CTkFrame(app, fg_color="transparent")
+frame_destino.pack(pady=5, fill="x", padx=40)
+
+entrada_destino = ctk.CTkEntry(frame_destino, width=440, placeholder_text="Selecione onde o novo arquivo será salvo")
+entrada_destino.pack(side="left", padx=(10, 5))
+
+botao_destino = ctk.CTkButton(frame_destino, text="...", width=40, command=selecionar_destino)
+botao_destino.pack(side="left")
+
+
+# --- BOTÃO DE EXECUÇÃO ---
+botao_rodar = ctk.CTkButton(app, text="Processar e Gerar Arquivo", command=executar_automacao, font=("Arial", 14, "bold"), height=40)
+botao_rodar.pack(pady=30)
+
+# Barra de Status
+label_status = ctk.CTkLabel(app, text="Status: Aguardando configurações.", font=("Arial", 12, "italic"))
+label_status.pack(pady=5)
+
+app.mainloop()
