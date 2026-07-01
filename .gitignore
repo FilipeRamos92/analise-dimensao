@@ -1,4 +1,10 @@
+
+
 # Bloquear todos os arquivos do Excel (originais ou gerados)
 *.xlsx
 *.xls
 *.xlsm
+
+dist
+build
+main.spec
