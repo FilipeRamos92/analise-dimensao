@@ -1,14 +1,13 @@
 import customtkinter as ctk
 from tkinter import filedialog
+from definir_caminho import selecionar_origem, selecionar_destino
 
 class Tela:
-    def __init__(self, master, selecionar_origem, selecionar_destino, executar_automacao):
+    def __init__(self, master, executar_automacao):
         self.master = master
         self.master.title("Automação de Análise de Dimensão")
         self.master.geometry("600x300")
         self.master.resizable(False, False)
-        self.selecionar_origem = selecionar_origem
-        self.selecionar_destino = selecionar_destino
         self.executar_automacao = executar_automacao
 
         ctk.set_appearance_mode("dark")
@@ -25,7 +24,7 @@ class Tela:
         self.entrada_origem = ctk.CTkEntry(self.frame_origem, width=440, placeholder_text="Selecione o arquivo (Excel)")
         self.entrada_origem.pack(side="left", padx=(10, 5))
 
-        self.botao_origem = ctk.CTkButton(self.frame_origem, text="...", width=40,command=self.selecionar_origem)
+        self.botao_origem = ctk.CTkButton(self.frame_origem, text="...", width=40,command=lambda: selecionar_origem(self.entrada_origem, self.label_status))
         self.botao_origem.pack(side="left", padx=(10, 5))
 
         # Destino
@@ -38,7 +37,7 @@ class Tela:
         self.entrada_destino = ctk.CTkEntry(self.frame_destino, width=440, placeholder_text="Selecione a pasta de destino")
         self.entrada_destino.pack(side="left", padx=(10, 5))
 
-        self.botao_destino = ctk.CTkButton(self.frame_destino, text="...", width=40, command=self.selecionar_destino)
+        self.botao_destino = ctk.CTkButton(self.frame_destino, text="...", width=40, command=lambda: selecionar_destino(self.entrada_destino, self.label_status))
         self.botao_destino.pack(side="left", padx=(10, 5))
 
         self.botao_executar = ctk.CTkButton(master, text="Executar", command=self.executar_automacao)

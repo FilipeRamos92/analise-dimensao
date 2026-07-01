@@ -3,32 +3,10 @@ import pandas as pd
 import openpyxl
 from pathlib import Path
 import customtkinter as ctk
-from tkinter import filedialog
 from tela import Tela
 
 ctk.set_appearance_mode("dark")
 ctk.set_default_color_theme("blue")
-
-def selecionar_origem():
-    """Abre o explorador para escolher o arquivo Excel original"""
-    caminho_escolhido = filedialog.askopenfilename(
-        title="Selecione o arquivo Excel de Origem",
-        filetypes=[("Arquivos do Excel", "*.xlsx")]
-    )
-    if caminho_escolhido:
-        tela.entrada_origem.delete(0, ctk.END)
-        tela.entrada_origem.insert(0, caminho_escolhido)
-        tela.label_status.configure(text="Arquivo de origem selecionado!", text_color="green")
-
-def selecionar_destino():
-    """Abre o explorador para escolher a pasta onde o novo arquivo será salvo"""
-    pasta_escolhida = filedialog.askdirectory(
-        title="Selecione a Pasta de Destino"
-    )
-    if pasta_escolhida:
-        tela.entrada_destino.delete(0, ctk.END)
-        tela.entrada_destino.insert(0, pasta_escolhida)
-        tela.label_status.configure(text="Pasta de destino selecionada!", text_color="green")
 
 def executar_automacao():
     arquivo_orignal = tela.entrada_origem.get().strip()
@@ -38,7 +16,7 @@ def executar_automacao():
         tela.label_status.configure(text="Erro: Preencha a origem e o destino!", text_color="red")
         return
 
-    tela.label_status.configure(text="Processando... Por favor, aguarde.", text_color="yellow")
+    tela.label_status.configure(text="Processando. Por favor, aguarde.", text_color="yellow")
 
     # Força a interface a atualizar o texto antes de travar no processo pesado
     app.update_idletasks()
@@ -81,7 +59,7 @@ def executar_automacao():
     tela.label_status.configure(text="Concluído! O arquivo 'Alocação por Porto.xlsx' foi gerado com sucesso!", text_color="green")
 
 app = ctk.CTk()
-tela = Tela(app, selecionar_origem, selecionar_destino, executar_automacao)
+tela = Tela(app, executar_automacao)
 
 app.mainloop()
 
