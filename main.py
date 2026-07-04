@@ -36,6 +36,9 @@ def executar_automacao():
 
     wb = openpyxl.load_workbook(arquivo_orignal, data_only=False)
 
+    aba_base = wb['Base']
+    cabecalhos = [cell.value for cell in aba_base[1]]
+
     for index, data_aloc in df_alocacao.iterrows():
         aloc[data_aloc['Cód. Embarcação']] = data_aloc['Cód. Porto']
 
@@ -44,6 +47,8 @@ def executar_automacao():
 
         if nome_aba not in wb.sheetnames:
             wb.create_sheet(title=nome_aba)
+            aba = wb[nome_aba]
+            aba.append(cabecalhos)
             print(f"Aba '{nome_aba}' criada com sucesso!")
             abas_criadas.append(nome_aba)
 
