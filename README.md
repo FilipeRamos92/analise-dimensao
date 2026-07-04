@@ -29,5 +29,5 @@ a informação da localização de cada embarcação. Utilizando uma planilha ex
 6. O sistema gerará um arquivo excel com as inconsistências separadas por abas, onde as abas estarão identificadas com o código do porto onde essas
    embarcações deveriam estar alocadas.
 
-  <img width="458" height="218" alt="image" src="https://github.com/user-attachments/assets/0ff3c670-ecdb-40e0-ad14-f14ad983df2b" />
+   <img width="458" height="218" alt="image" src="https://github.com/user-attachments/assets/0ff3c670-ecdb-40e0-ad14-f14ad983df2b" />
 
