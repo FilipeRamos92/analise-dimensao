@@ -12,15 +12,15 @@ a informação da localização de cada embarcação. Utilizando uma planilha ex
 
 2. Criamos uma aba "Base" que recebe os registros contábeis que serão analisados.
 
-  <img width="416" height="449" alt="image" src="https://github.com/user-attachments/assets/6f16a529-9140-4247-ad4e-154a96981b8c" />
+   <img width="416" height="449" alt="image" src="https://github.com/user-attachments/assets/6f16a529-9140-4247-ad4e-154a96981b8c" />
 
 3. Na aplicação, selecionamos o arquivo contendo as informações anteriores para análise.
 
-  <img width="597" height="329" alt="image" src="https://github.com/user-attachments/assets/853b363b-37a6-4da1-bf9d-0958d613a8ed" />
+   <img width="597" height="329" alt="image" src="https://github.com/user-attachments/assets/853b363b-37a6-4da1-bf9d-0958d613a8ed" />
 
 4. Selecionamos o destino do arquivo processado com as inconsistências.
 
-  <img width="604" height="229" alt="image" src="https://github.com/user-attachments/assets/a078f84a-f1f1-41ab-b816-dbcf4b961e8e" />
+   <img width="604" height="229" alt="image" src="https://github.com/user-attachments/assets/a078f84a-f1f1-41ab-b816-dbcf4b961e8e" />
 
 5. Executamos o processamento do arquivo.
 
