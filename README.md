@@ -5,7 +5,7 @@ Esse projeto tem como objetivo automatizar o processo de análise da alocação 
 Para cada registro contábil é atribuído um código de porto e um código de embarcação. No final de cada período é enviado pelo setor responsável
 a informação da localização de cada embarcação. Utilizando uma planilha excel, seguimos os passos: 
 
-1. Criamos uma aba "Alocação" onde é preenchido com as informações sobre a localização das embarcação no final do período e identificamos com
+1. Criamos uma aba "Alocação" onde é preenchido com as informações sobre a localização das embarcações no final do período e identificamos com
    os códigos dos respectivos portos e embarcações.
 
    <img width="469" height="793" alt="image" src="https://github.com/user-attachments/assets/8ca48fc9-d52e-42da-9798-ba7e0d0b6761" />
