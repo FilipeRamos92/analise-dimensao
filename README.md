@@ -8,11 +8,11 @@ a informação da localização de cada embarcação. Utilizando uma planilha ex
 1. Criamos uma aba "Alocação" onde é preenchido com as informações sobre a localização das embarcações no final do período e identificamos com
    os códigos dos respectivos portos e embarcações.
 
-   <img width="469" height="793" alt="image" src="https://github.com/user-attachments/assets/8ca48fc9-d52e-42da-9798-ba7e0d0b6761" />
+   <img width="473" height="219" alt="image" src="https://github.com/user-attachments/assets/5b4b53ef-816f-4480-b1ec-1178b243fab1" />
 
 2. Criamos uma aba "Base" que recebe os registros contábeis que serão analisados.
 
-  <img width="396" height="793" alt="image" src="https://github.com/user-attachments/assets/9f46dde5-6c60-4d10-a07c-b9705626ce4f" />
+  <img width="416" height="449" alt="image" src="https://github.com/user-attachments/assets/6f16a529-9140-4247-ad4e-154a96981b8c" />
 
 3. Na aplicação, selecionamos o arquivo contendo as informações anteriores para análise.
 
@@ -29,4 +29,5 @@ a informação da localização de cada embarcação. Utilizando uma planilha ex
 6. O sistema gerará um arquivo excel com as inconsistências separadas por abas, onde as abas estarão identificadas com o código do porto onde essas
    embarcações deveriam estar alocadas.
 
-  <img width="593" height="800" alt="image" src="https://github.com/user-attachments/assets/75ad0cf9-fbfa-462a-892c-6c7d0bd2fcfa" />
+  <img width="458" height="218" alt="image" src="https://github.com/user-attachments/assets/0ff3c670-ecdb-40e0-ad14-f14ad983df2b" />
+
