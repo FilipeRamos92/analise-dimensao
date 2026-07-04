@@ -4,6 +4,7 @@ import openpyxl
 from pathlib import Path
 import customtkinter as ctk
 from tela import Tela
+from definir_caminho import obter_caminho_recurso
 
 ctk.set_appearance_mode("dark")
 ctk.set_default_color_theme("blue")

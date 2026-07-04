@@ -1,6 +1,6 @@
+import sys
 from tkinter import filedialog
 import customtkinter as ctk
-
 
 def selecionar_origem(entrada, label_status):
     """Abre o explorador para escolher o arquivo Excel original"""
