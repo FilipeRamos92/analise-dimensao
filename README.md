@@ -32,6 +32,6 @@ a informação da localização de cada embarcação. Utilizando uma planilha ex
    <img width="458" height="218" alt="image" src="https://github.com/user-attachments/assets/0ff3c670-ecdb-40e0-ad14-f14ad983df2b" />
 
 
-Obs: O projeto foi realizado com a versão 3.13 do Python. Para buildar o projeto em um arquivo executável é necessário rodar o seguinte comando: 
+Obs: O projeto foi realizado com a versão 3.13 do Python. Para buildar o projeto em um arquivo executável é necessário rodar o seguinte comando no terminal: 
 
-``` python -m PyInstaller --noconsole --onefile --icon="merge-ico.ico" --name="PDF-Organizator" app.py ```
+``` python -m PyInstaller --noconsole --onefile --icon="reboc_icone.ico" --name="AutomacaoPE" main.py ```
